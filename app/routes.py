@@ -1,22 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-db = SQLAlchemy(app)
-
-class Noodle(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    review = db.Column(db.String(200), nullable=False)
-    rating = db.Column(db.Integer, nullable=False)
-    spiciness = db.Column(db.Integer, nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
-
-class Category(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    company = db.Column(db.String(100), nullable=False)
-    noodles = db.relationship('Noodle', backref='category', lazy=True)
+from app.app import app, db
+from flask import request, redirect, render_template, url_for
+from app.models import Category, Noodle
 
 @app.route('/', methods=['GET'])
 def home():
@@ -53,7 +37,3 @@ def submit_review():
 
     categories = Category.query.all()
     return render_template('submit_review.html', categories=categories)
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
