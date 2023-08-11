@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Noodle Reviews</title>
+    <title>InstaNoodle</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-<h1>Noodle Reviews</h1>
+<h1>InstaNoodle</h1>
 <a href="{{ url_for('submit_review') }}" class="submit-link">Submit a new review</a>
 
 <form method="get" action="{{ url_for('home') }}" class="filter-form">
@@ -33,14 +33,21 @@
         <div class="review-card">
             <h3 class="noodle-name">{{ noodle.name }}</h3>
             <p class="noodle-review">{{ noodle.review }}</p>
-            <p class="noodle-rating">Rating: {{ noodle.rating }}/5</p>
-            <p class="noodle-company">Company: {{ noodle.category.company }}</p>
-            <p class="noodle-spiciness">Spiciness: {{ noodle.spiciness }}</p>
+            <div class="review-card-bottom">
+                <span class="noodle-rating star-rating">
+                    Rating: 
+                    {% for i in range(noodle.rating) %}⭐{% endfor %}
+                    {% for i in range(5-noodle.rating) %}☆{% endfor %}
+                </span> 
+                <span class="noodle-company">Company: {{ noodle.category.company }}</span>
+                <span class="noodle-spiciness chili-rating">
+                    Spiciness: 
+                    {% for i in range(noodle.spiciness) %}🌶{% endfor %}
+                </span>
+            </div>
         </div>
     {% endfor %}
 </div>
 
 </body>
 </html>
-
-
