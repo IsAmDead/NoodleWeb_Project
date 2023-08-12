@@ -1,28 +1,28 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #FFEBD3; /* Warm off-white background */
+    background-color: #FFEBD3;
     margin: 40px;
     color: #333;
-    overflow: hidden; /* Prevent scrolling during animation */
+    overflow: hidden;
 }
 
 h1 {
     text-align: center;
     margin-bottom: 30px;
-    font-size: 3em;   /* Increase font size for prominence */
-    color: #B5651D;  /* Retain the warm brown */
-    text-shadow: none; /* Removing shadow for minimalism */
-    -webkit-text-stroke: 0px; /* Removing text stroke for cleaner look */
-    letter-spacing: -1px; /* Slight condensation for modern feel */
-    font-weight: 600; /* Making it slightly bolder without being overpowering */
+    font-size: 3em;
+    color: #B5651D;
+    text-shadow: none;
+    -webkit-text-stroke: 0px;
+    letter-spacing: -1px;
+    font-weight: 600;
 }
 
-
-.submit-link {
+.submit-link, a {
     display: block;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 200px;
     text-align: center;
-    background-color: #FFA726; /* Warm orange */
+    background-color: #FFA726;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -30,8 +30,8 @@ h1 {
     transition: background-color 0.3s;
 }
 
-.submit-link:hover {
-    background-color: #FF8C00; /* Darker warm orange on hover */
+.submit-link:hover, a:hover {
+    background-color: #FF8C00;
 }
 
 .filter-form {
@@ -39,31 +39,31 @@ h1 {
     justify-content: center;
     gap: 20px;
     margin-bottom: 30px;
-    background-color: #FFD8A8; /* Light warm peach for the filter form */
+    background-color: #FFD8A8;
     padding: 10px;
     border-radius: 5px;
 }
 
-select, input[type="submit"] {
+.select, input[type="submit"] {
     padding: 10px;
-    border: 1px solid #FFA726; /* Matching warm orange border */
+    border: 1px solid #FFA726;
     border-radius: 5px;
 }
 
 input[type="submit"] {
-    background-color: #FFA726; /* Warm orange theme */
+    background-color: #FFA726;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 input[type="submit"]:hover {
-    background-color: #FF8C00; /* Darker warm orange on hover */
+    background-color: #FF8C00;
 }
 
 .reviews-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Increased width for a square look */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
 }
 
@@ -72,14 +72,14 @@ input[type="submit"]:hover {
     flex-direction: column;
     height: 350px; 
     padding: 20px;
-    border: 12px solid #FFD8A8; /* Light warm peach border for the cards */
+    border: 12px solid #FFD8A8;
     border-radius: 5px;
-    background-color: #FFE4BD; /* Soft warm peach for the review card */
+    background-color: #FFE4BD;
     transition: box-shadow 0.3s;
 }
 
 .review-card:hover {
-    box-shadow: 0px 0px 10px rgba(255, 138, 0, 0.1); /* Warm shadow */
+    box-shadow: 0px 0px 10px rgba(255, 138, 0, 0.1);
 }
 
 .noodle-name {
@@ -96,11 +96,11 @@ input[type="submit"]:hover {
 
 .review-card-bottom {
     display: flex;
-    flex-direction: column; /* Use column direction for two-row layout */
-    gap: 5px; /* Space between rows */
+    flex-direction: column;
+    gap: 5px;
     margin-top: auto;  
     background-color: #FFF5E1;
-    padding: 5px 10px; /* Horizontal padding adjustment */
+    padding: 5px 10px;
     border-radius: 5px;
 }
 
@@ -120,7 +120,7 @@ input[type="submit"]:hover {
 .label {
     font-weight: bold;
     color: #B5651D;
-    margin-right: 10px; /* Add some space between the label and its content */
+    margin-right: 10px;
 }
 
 .star-rating, .chili-rating {
@@ -128,7 +128,7 @@ input[type="submit"]:hover {
 }
 
 .noodle-company {
-    color: #8A6D3B; /* Muted warm brown for secondary text */
+    color: #8A6D3B;
 }
 
 .splash-screen {
@@ -141,14 +141,14 @@ input[type="submit"]:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Ensure it's above all other content */
+    z-index: 1000;
     animation: fadeBackgroundOut 3s 1s forwards, hideSplash 0.01s 4s forwards;
 }
 
 .splash-screen h1 {
     font-size: 10em;
-    opacity: 0; /* Start invisible */
-    transform: scale(0.5); /* Start at half the size */
+    opacity: 0;
+    transform: scale(0.5);
     animation: fadeInScaleUp 2s forwards, fadeOut 1s 2s forwards;
 }
 
@@ -165,9 +165,9 @@ input[type="submit"]:hover {
     }
     to {
         opacity: 0;
-        display: none; /* Add this */
     }
 }
+
 @keyframes fadeBackgroundOut {
     to {
         background-color: transparent;
@@ -188,4 +188,91 @@ input[type="submit"]:hover {
 .content-wrapper {
     animation: fadeIn 1s forwards 1.5s;
     opacity: 0;
+}
+
+/* Newly added styles for the submission form */
+.submit-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #FFD8A8;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(255, 138, 0, 0.1);
+}
+
+.submit-form label {
+    display: block; 
+    margin-bottom: 5px;
+    color: #B5651D;
+    font-weight: bold;
+}
+
+.submit-form input[type="text"], 
+.submit-form textarea, 
+.submit-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #FFA726;
+    border-radius: 5px;
+    background-color: #FFE4BD;
+    color: #333;
+}
+
+.submit-form input[type="number"] {
+    width: auto;
+}
+
+.submit-form input[type="submit"] {
+    width: 100%;
+}
+
+#rating, #spiciness {
+    display: none;  /* Hide original elements */
+}
+
+#rating input[type="radio"], 
+#spiciness input[type="radio"] {
+    display: none;
+}
+
+#rating label, 
+#spiciness label {
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+#rating input[type="radio"]:checked + label,
+#spiciness input[type="radio"]:checked + label {
+    transform: scale(1.2);
+}
+
+/* Modify the form submit button for better look */
+.submit-form input[type="submit"] {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    box-shadow: none;
+    transition: transform 0.2s;
+}
+
+.submit-form input[type="submit"]:hover {
+    transform: scale(1.05);
+}
+
+.submit-form input[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+.rating-container, 
+.spiciness-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background-color: #FFE4BD;  /* Light background for better contrast */
+    padding: 10px;
+    border: 2px solid #FFA726;
+    border-radius: 5px;
+    margin-bottom: 20px;  /* A bit of margin to separate from other elements */
 }
