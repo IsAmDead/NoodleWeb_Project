@@ -34,17 +34,20 @@
             <h3 class="noodle-name">{{ noodle.name }}</h3>
             <p class="noodle-review">{{ noodle.review }}</p>
             <div class="review-card-bottom">
-                <span class="noodle-rating star-rating">
-                    Rating: 
+                <div class="noodle-rating">
+                    <span class="label">Rating:</span>
                     {% for i in range(noodle.rating) %}⭐{% endfor %}
                     {% for i in range(5-noodle.rating) %}☆{% endfor %}
-                </span> 
-                <span class="noodle-company">Company: {{ noodle.category.company }}</span>
-                <span class="noodle-spiciness chili-rating">
-                    Spiciness: 
+                </div>
+                <div class="noodle-spiciness">
+                    <span class="label">Spiciness:</span>
                     {% for i in range(noodle.spiciness) %}🌶{% endfor %}
-                </span>
-            </div>
+                </div>
+                <div class="noodle-company">
+                    <span class="label">Company:</span>
+                    {{ noodle.category.company }}
+                </div>
+            </div>            
         </div>
     {% endfor %}
 </div>
