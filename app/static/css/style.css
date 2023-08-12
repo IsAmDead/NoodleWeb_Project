@@ -142,7 +142,7 @@ input[type="submit"]:hover {
     align-items: center;
     justify-content: center;
     z-index: 1000; /* Ensure it's above all other content */
-    animation: hideSplash 0.01s 3s forwards; /* Add this line */
+    animation: fadeBackgroundOut 3s 1s forwards, hideSplash 0.01s 4s forwards;
 }
 
 .splash-screen h1 {
@@ -168,6 +168,11 @@ input[type="submit"]:hover {
         display: none; /* Add this */
     }
 }
+@keyframes fadeBackgroundOut {
+    to {
+        background-color: transparent;
+    }
+}
 
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -181,6 +186,6 @@ input[type="submit"]:hover {
 }
 
 .content-wrapper {
-    animation: fadeIn 1s forwards 1.5s; /* This will start after 1.5s (the time taken by the title animation) */
+    animation: fadeIn 1s forwards 1.5s;
     opacity: 0;
 }
