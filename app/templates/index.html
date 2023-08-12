@@ -7,50 +7,54 @@
 </head>
 <body>
 
-<h1>InstaNoodle</h1>
-<a href="{{ url_for('submit_review') }}" class="submit-link">Submit a new review</a>
+    <div class="splash-screen">
+        <h1>InstaNoodle</h1>
+    </div>
+    <div class="content-wrapper">
+        <a href="{{ url_for('submit_review') }}" class="submit-link">Submit a new review</a>
 
-<form method="get" action="{{ url_for('home') }}" class="filter-form">
-    <select name="company">
-        <option value="">All Companies</option>
-        {% for category in categories %}
-            <option value="{{ category.company }}">{{ category.company }}</option>
-        {% endfor %}
-    </select>
-    
-    <select name="spiciness">
-        <option value="">All Spiciness</option>
-        {% for spiciness in spiciness_values %}
-            <option value="{{ spiciness }}">{{ spiciness }}</option>
-        {% endfor %}
-    </select>
-    
-    <input type="submit" value="Filter">
-</form>
+        <form method="get" action="{{ url_for('home') }}" class="filter-form">
+            <select name="company">
+                <option value="">All Companies</option>
+                {% for category in categories %}
+                    <option value="{{ category.company }}">{{ category.company }}</option>
+                {% endfor %}
+            </select>
+            
+            <select name="spiciness">
+                <option value="">All Spiciness</option>
+                {% for spiciness in spiciness_values %}
+                    <option value="{{ spiciness }}">{{ spiciness }}</option>
+                {% endfor %}
+            </select>
+            
+            <input type="submit" value="Filter">
+        </form>
 
-<div class="reviews-container">
-    {% for noodle in noodles %}
-        <div class="review-card">
-            <h3 class="noodle-name">{{ noodle.name }}</h3>
-            <p class="noodle-review">{{ noodle.review }}</p>
-            <div class="review-card-bottom">
-                <div class="noodle-rating">
-                    <span class="label">Rating:</span>
-                    {% for i in range(noodle.rating) %}⭐{% endfor %}
-                    {% for i in range(5-noodle.rating) %}☆{% endfor %}
+        <div class="reviews-container">
+            {% for noodle in noodles %}
+                <div class="review-card">
+                    <h3 class="noodle-name">{{ noodle.name }}</h3>
+                    <p class="noodle-review">{{ noodle.review }}</p>
+                    <div class="review-card-bottom">
+                        <div class="noodle-rating">
+                            <span class="label">Rating:</span>
+                            {% for i in range(noodle.rating) %}⭐{% endfor %}
+                            {% for i in range(5-noodle.rating) %}☆{% endfor %}
+                        </div>
+                        <div class="noodle-spiciness">
+                            <span class="label">Spiciness:</span>
+                            {% for i in range(noodle.spiciness) %}🌶{% endfor %}
+                        </div>
+                        <div class="noodle-company">
+                            <span class="label">Company:</span>
+                            {{ noodle.category.company }}
+                        </div>
+                    </div>            
                 </div>
-                <div class="noodle-spiciness">
-                    <span class="label">Spiciness:</span>
-                    {% for i in range(noodle.spiciness) %}🌶{% endfor %}
-                </div>
-                <div class="noodle-company">
-                    <span class="label">Company:</span>
-                    {{ noodle.category.company }}
-                </div>
-            </div>            
+            {% endfor %}
         </div>
-    {% endfor %}
-</div>
+    </div>
 
 </body>
 </html>
