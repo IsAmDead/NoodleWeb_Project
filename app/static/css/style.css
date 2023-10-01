@@ -276,3 +276,39 @@ input[type="submit"]:hover {
     border-radius: 5px;
     margin-bottom: 20px;  /* A bit of margin to separate from other elements */
 }
+
+.filter-form select {
+    width: 250px;  /* Adjust to desired width, previously it was 100% */
+    padding: 10px;
+    border: 1px solid #FFA726;
+    border-radius: 5px;
+    background-color: #FFE4BD;
+    color: #333;
+    appearance: none; 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path fill="#333" d="M12 0L6 6 0 0z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Positioning the custom arrow */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.filter-form select:hover {
+    background-color: #FFD8A8;
+}
+
+/* To ensure the dropdown remains visible, especially for Firefox */
+.filter-form select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #333;
+}
+
+/* To style the options in the dropdown */
+.filter-form option {
+    background-color: #FFD8A8;
+    color: #333;
+}
+
+
