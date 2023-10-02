@@ -311,4 +311,11 @@ input[type="submit"]:hover {
     color: #333;
 }
 
+.noodle-image {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 
