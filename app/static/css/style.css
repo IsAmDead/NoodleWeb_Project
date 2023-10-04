@@ -68,14 +68,9 @@ input[type="submit"]:hover {
 }
 
 .review-card {
-    display: flex;
-    flex-direction: column;
-    height: 350px; 
-    padding: 20px;
-    border: 12px solid #FFD8A8;
-    border-radius: 5px;
-    background-color: #FFE4BD;
-    transition: box-shadow 0.3s;
+    position: relative; /* Set position to relative to help with absolute positioning of child elements */
+    overflow: hidden; /* Hide anything that goes outside the card boundaries */
+    height: 350px; /* Setting a fixed height so the card maintains a square look */
 }
 
 .review-card:hover {
@@ -84,9 +79,12 @@ input[type="submit"]:hover {
 }
 
 .noodle-name {
-    font-size: 20px;
-    margin-top: 0;
-    margin-bottom: 10px;
+    position: absolute; /* Position at the top left corner */
+    top: 16px; /* Some spacing from the top */
+    left: 16px;
+    z-index: 2; /* Keep it above the image */
+    background-color: rgba(255,255,255,0.7); /* Semi-transparent background to make the text readable */
+    padding: 5px; /* Some padding around the text */
 }
 
 .noodle-review {
@@ -96,13 +94,13 @@ input[type="submit"]:hover {
 }
 
 .review-card-bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: auto;  
-    background-color: #FFF5E1;
-    padding: 5px 10px;
-    border-radius: 5px;
+    position: absolute; /* Position it at the bottom of the card */
+    bottom: 16px; /* A bit of spacing from the bottom */
+    left: 16px;
+    right: 16px;
+    z-index: 2; /* Keep this above the image */
+    background-color: rgba(255,255,255,0.7); /* Semi-transparent background to make the text readable */
+    padding: 5px; /* Some padding around the text */
 }
 
 .ratings-row, .spiciness-row, .company-row {
@@ -112,10 +110,11 @@ input[type="submit"]:hover {
     width: 100%; 
 }
 
-.noodle-rating, .noodle-spiciness, .noodle-company {
-    display: flex;
-    align-items: center;
-    width: 100%;
+.noodle-rating,
+.noodle-spiciness,
+.noodle-company {
+    flex: 1;
+    text-align: center;
 }
 
 .label {
@@ -313,10 +312,33 @@ input[type="submit"]:hover {
 }
 
 .noodle-image {
-    width: 100%;
-    max-height: 150px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    width: 100%; /* This will make the image take the full width of the card */
+    height: 100%; /* This will make the image take the full height of the card */
+    object-fit: cover; /* Ensures that the image covers the full area without distortion */
+    position: absolute; /* This will place the image behind the text elements */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Keep this behind the text */
+}
+
+.content-wrapper.blurred {
+    filter: blur(5px);
+    pointer-events: none;  /* Prevents interactions with background elements */
+}
+
+.review-card.active {
+    z-index: 10; /* Put the active card above others */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2); /* Center the card and make it bigger */
+    max-width: 90%; /* Prevent it from being too big on larger screens */
+    max-height: 90%;
+    overflow-y: auto; /* Enable scrolling for large content */
+}
+
+/* This will avoid the other cards from scrolling when one is active */
+.review-card:not(.active) {
+    overflow: hidden;
 }
 

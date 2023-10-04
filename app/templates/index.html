@@ -34,9 +34,8 @@
         <div class="reviews-container">
             {% for noodle in noodles %}
                 <div class="review-card">
+                    <img src="{{ url_for('static', filename='images/' + noodle.image) }}" alt="{{ noodle.name }}" class="noodle-image">
                     <h3 class="noodle-name">{{ noodle.name }}</h3>
-                    <p class="noodle-review">{{ noodle.review }}</p>
-                    <img src="{{ url_for('static', filename='images/' + noodle.image) }}" alt="{{ noodle.name }}" class="noodle-image"> <!-- This line adds the image -->
                     <div class="review-card-bottom">
                         <div class="noodle-rating">
                             <span class="label">Rating:</span>
