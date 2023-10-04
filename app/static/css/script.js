@@ -5,3 +5,5 @@ document.addEventListener("DOMContentLoaded", function() {
         document.body.style.overflow = 'auto'; // Enable scrolling again
     }, 3000); // 3 seconds (the total time of both animations)
 });
+
+
