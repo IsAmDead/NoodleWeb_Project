@@ -68,9 +68,8 @@ input[type="submit"]:hover {
 }
 
 .review-card {
-    position: relative; /* Set position to relative to help with absolute positioning of child elements */
-    overflow: hidden; /* Hide anything that goes outside the card boundaries */
-    height: 350px; /* Setting a fixed height so the card maintains a square look */
+    position: relative;
+    overflow: hidden;
 }
 
 .review-card:hover {
@@ -312,13 +311,12 @@ input[type="submit"]:hover {
 }
 
 .noodle-image {
-    width: 100%; /* This will make the image take the full width of the card */
-    height: 100%; /* This will make the image take the full height of the card */
-    object-fit: cover; /* Ensures that the image covers the full area without distortion */
-    position: absolute; /* This will place the image behind the text elements */
+    position: absolute;
     top: 0;
     left: 0;
-    z-index: 1; /* Keep this behind the text */
+    width: 100%;
+    height: 100%; 
+    object-fit: cover;
 }
 
 .content-wrapper.blurred {
@@ -385,4 +383,32 @@ input[type="submit"]:hover {
 .navbar a i {
     font-size: 24px; 
 }
+
+.review-card-meta {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFEBD3; /* same as the website background */
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    padding: 5px 16px; /* similar to other paddings */
+}
+
+.review-details {
+    margin-top: 20px; /* Adjust as per design requirement */
+    padding-bottom: 10px; 
+}
+
+.image-wrapper {
+    width: 100%; 
+    padding-top: 100%; /* This ensures a square aspect ratio */
+    position: relative; /* This will allow the child image to be positioned based on this container */
+}
+
+fieldset {
+    border: none;
+}
+
+
 

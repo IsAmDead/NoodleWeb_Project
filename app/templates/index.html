@@ -2,60 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensuring responsive design -->
     <title>InstaNoodle</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     {% include "navbar.html" %}
 
-    <div class="splash-screen">
+    <header class="splash-screen">
         <h1>InstaNoodle</h1>
-    </div>
-    <div class="content-wrapper">
-        <a href="{{ url_for('submit_review') }}" class="button">Submit a new review</a>
+    </header>
+    <main class="content-wrapper">
 
         <form method="get" action="{{ url_for('home') }}" class="filter-form">
-            <select name="company">
-                <option value="">All Companies</option>
-                {% for category in categories %}
-                    <option value="{{ category.company }}">{{ category.company }}</option>
-                {% endfor %}
-            </select>
-            
-            <select name="spiciness">
-                <option value="">All Spiciness</option>
-                {% for spiciness in spiciness_values %}
-                    <option value="{{ spiciness }}">{{ spiciness }}</option>
-                {% endfor %}
-            </select>
-            
-            <input type="submit" value="Filter" class="button">
+            <fieldset>
+                <!-- <legend>Filter Reviews</legend> <!-- Improved semantics and accessibility -->
+
+                <select name="company" aria-label="Filter by company">
+                    <option value="">All Companies</option>
+                    {% for category in categories %}
+                        <option value="{{ category.company }}">{{ category.company }}</option>
+                    {% endfor %}
+                </select>
+                
+                <select name="spiciness" aria-label="Filter by spiciness level">
+                    <option value="">All Spiciness</option>
+                    {% for spiciness in spiciness_values %}
+                        <option value="{{ spiciness }}">{{ spiciness }}</option>
+                    {% endfor %}
+                </select>
+                
+                <input type="submit" value="Filter" class="button" aria-label="Filter reviews">
+            </fieldset>
         </form>
 
-        <div class="reviews-container">
+        <section class="reviews-container" aria-label="Noodle reviews">
             {% for noodle in noodles %}
                 <div class="review-card">
-                    <img src="{{ url_for('static', filename='images/' + noodle.image) }}" alt="{{ noodle.name }}" class="noodle-image">
-                    <h3 class="noodle-name">{{ noodle.name }}</h3>
-                    <div class="review-card-bottom">
+                    <div class="image-wrapper">
+                        <img src="{{ url_for('static', filename='images/' + noodle.image) }}" alt="{{ noodle.name }}" class="noodle-image">
+                    </div>
+                    <div class="review-details">
                         <div class="noodle-rating">
-                            <span class="label">Rating:</span>
+                            <span class="label"></span>
                             {% for i in range(noodle.rating) %}⭐{% endfor %}
                             {% for i in range(5-noodle.rating) %}☆{% endfor %}
                         </div>
                         <div class="noodle-spiciness">
-                            <span class="label">Spiciness:</span>
+                            <span class="label"></span>
                             {% for i in range(noodle.spiciness) %}🌶{% endfor %}
                         </div>
                         <div class="noodle-company">
-                            <span class="label">Company:</span>
+                            <span class="label"></span>
                             {{ noodle.category.company }}
                         </div>
-                    </div>            
+                    </div>
                 </div>
             {% endfor %}
-        </div>
-    </div>
+        </section>
+    </main>
 
 </body>
 </html>
