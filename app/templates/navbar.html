@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaNoodle Navbar</title>
+    
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Basic styling for the navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            color: white; /* Setting the color to white for visibility on dark navbar */
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Space between icon and text, if any */
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            margin-right: 10px;
+        }
+
+        .navbar-center {
+            display: flex;
+            gap: 20px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .navbar a:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Brand Icon and Name -->
+        <div>
+            <a href="#">
+                <i class="fas fa-utensils brand-icon"></i>
+                InstaNoodle
+            </a>
+        </div>
+        
+        <!-- Home and Submit icons in center -->
+        <div class="navbar-center">
+            <a href="#"><i class="fas fa-home"></i></a>
+            <a href="#"><i class="fas fa-upload"></i></a>
+        </div>
+    
+        <!-- Empty div to maintain space-between alignment -->
+        <div></div>
+    </div>
+</body>
+</html>
+
