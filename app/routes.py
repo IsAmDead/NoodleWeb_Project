@@ -1,3 +1,4 @@
+import os
 from app.app import app, db
 from flask import request, redirect, render_template, url_for
 from app.models import Category, Noodle
@@ -33,7 +34,17 @@ def submit_review():
         db.session.add(new_review)
         db.session.commit()
 
+        image = request.files['image']
+        if image and image.filename: # Check if the image has a filename
+            image_filename = os.path.join("static", "images", image.filename)
+            image.save(image_filename)
+
+            new_review.image = image.filename
+            db.session.commit()  # Don't forget to commit the changes
+
         return redirect(url_for('home'))
+    
+        
 
     categories = Category.query.all()
     return render_template('submit_review.html', categories=categories)
