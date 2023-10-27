@@ -4,6 +4,26 @@
     <meta charset="UTF-8">
     <title>Submit Noodle Review</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script>
+        function previewImage() {
+            const fileInput = document.getElementById('image');
+            const previewContainer = document.getElementById('imagePreview');
+
+            const file = fileInput.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onloadend = function() {
+                    previewContainer.style.display = 'block';
+                    previewContainer.src = reader.result;
+                }
+            } else {
+                previewContainer.style.display = 'none';
+            }
+        }
+    </script>
+
 </head>
 <body>
     {% include "navbar.html" %}
@@ -13,10 +33,10 @@
     <form action="{{ url_for('submit_review') }}" method="post" class="submit-form" enctype="multipart/form-data">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
-        
+
         <label for="review">Review:</label>
         <textarea id="review" name="review" required></textarea><br>
-        
+
         <label>Rating:</label>
         <div class="rating-container">
             <input type="radio" name="rating" value="1" id="rating1" required><label for="rating1">⭐</label>
@@ -42,10 +62,10 @@
             {% endfor %}
         </select><br>
 
-        <!-- Image upload input -->
         <label for="image">Upload Image:</label>
-        <input type="file" id="image" name="image"><br>
-        
+        <input type="file" id="image" name="image" onchange="previewImage()"><br>
+        <img id="imagePreview" style="display:none; width:200px; margin-top:10px;" alt="Image Preview">
+
         <input type="submit" value="Submit" class="button">
     </form>
 

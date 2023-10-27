@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM Content Loaded");
-    const reviewCards = document.querySelectorAll('.review-card');  // This line is added
+    const reviewCards = document.querySelectorAll('.review-card'); 
 
     setTimeout(function() {
         const splash = document.querySelector(".splash-screen");

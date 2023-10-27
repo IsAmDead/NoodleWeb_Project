@@ -411,5 +411,24 @@ fieldset {
     border: none;
 }
 
+.image-preview {
+    margin-top: 20px;
+    max-width: 200px; /* Set to a suitable width */
+    max-height: 200px; /* Set to a suitable height */
+    border: 2px dashed #FFA726;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+#uploadedImage {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    border-radius: 5px;
+}
+
 
 

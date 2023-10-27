@@ -37,7 +37,7 @@ def submit_review():
             image.save(image_filename)
             new_review = Noodle(name=name, review=review, rating=rating, spiciness=spiciness, category_id=company_id,image=image.filename)
             db.session.add(new_review)
-            db.session.commit()  # Don't forget to commit the changes
+            db.session.commit()
 
         return redirect(url_for('home'))
     
