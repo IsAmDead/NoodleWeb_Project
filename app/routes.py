@@ -18,7 +18,7 @@ def home():
     categories = Category.query.distinct().all()
     spiciness_values = [x[0] for x in db.session.query(Noodle.spiciness).distinct()]
 
-    return render_template('index.html', noodles=noodles, categories=categories, spiciness_values=spiciness_values)
+    return render_template('index.html', noodles=noodles, categories=categories, spiciness_values=spiciness_values, SPICINESS_EMOJI_MAP=SPICINESS_EMOJI_MAP, RATING_EMOJI_MAP=RATING_EMOJI_MAP)
 
 @app.route('/submit_review', methods=['GET', 'POST'])
 def submit_review():
@@ -37,3 +37,19 @@ def submit_review():
 
     categories = Category.query.all()
     return render_template('submit_review.html', categories=categories)
+
+SPICINESS_EMOJI_MAP = {
+    1: "🌶️",
+    2: "🌶️🌶️",
+    3: "🌶️🌶️🌶️",
+    4: "🌶️🌶️🌶️🌶️",
+    5: "🌶️🌶️🌶️🌶️🌶️"
+}
+
+RATING_EMOJI_MAP = {
+    1: "⭐",
+    2: "⭐⭐",
+    3: "⭐⭐⭐",
+    4: "⭐⭐⭐⭐",
+    5: "⭐⭐⭐⭐⭐"
+}

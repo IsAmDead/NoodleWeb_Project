@@ -68,8 +68,12 @@ input[type="submit"]:hover {
 }
 
 .review-card {
+    border-radius: 10px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: flex-start;  /* Adjusts content alignment */
+    flex-direction: column;       /* Stack content vertically */
 }
 
 .review-card:hover {
@@ -145,6 +149,7 @@ input[type="submit"]:hover {
 }
 
 .splash-screen h1 {
+    font-family: 'Pacifico', cursive;
     font-size: 10em;
     opacity: 0;
     transform: scale(0.5);
@@ -311,12 +316,15 @@ input[type="submit"]:hover {
 }
 
 .noodle-image {
+    border-radius: 10px;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
     object-fit: cover;
+    z-index: 1; /* Place image below the text */
+    margin-right: 200px;
 }
 
 .content-wrapper.blurred {
@@ -325,14 +333,17 @@ input[type="submit"]:hover {
 }
 
 .review-card.active {
-    z-index: 10; /* Put the active card above others */
+    z-index: 10;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.2); /* Center the card and make it bigger */
-    max-width: 90%; /* Prevent it from being too big on larger screens */
+    transform: translate(-50%, -50%) scale(1.2);
+    max-width: 90%;
     max-height: 90%;
-    overflow-y: auto; /* Enable scrolling for large content */
+    overflow-y: auto;
+    display: flex;               /* Making it a flex container */
+    flex-direction: column;     /* Organize children vertically */
+    justify-content: space-between;  /* Distribute the space */
 }
 
 /* This will avoid the other cards from scrolling when one is active */
@@ -408,6 +419,40 @@ input[type="submit"]:hover {
 
 fieldset {
     border: none;
+}
+
+.icon-circle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FFA726;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.expanding-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFD8A8;
+    border: 1px solid #FFA726;
+    border-radius: 5px;
+}
+
+.expanding-list option {
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+    white-space: nowrap;  /* To prevent wrapping of text */
+}
+
+.hidden {
+    display: none;
 }
 
 
