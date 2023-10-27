@@ -21,7 +21,7 @@ def home():
 
     return render_template('index.html', noodles=noodles, categories=categories, spiciness_values=spiciness_values)
 
-@app.route('/submit_review', methods=['GET', 'POST'])
+app.route('/submit_review', methods=['GET', 'POST'])
 def submit_review():
     if request.method == 'POST':
         name = request.form['name']
@@ -30,16 +30,13 @@ def submit_review():
         spiciness = request.form['spiciness']
         company_id = request.form['company']
 
-        new_review = Noodle(name=name, review=review, rating=rating, spiciness=spiciness, category_id=company_id)
-        db.session.add(new_review)
-        db.session.commit()
 
         image = request.files['image']
         if image and image.filename: # Check if the image has a filename
             image_filename = os.path.join("static", "images", image.filename)
             image.save(image_filename)
-
-            new_review.image = image.filename
+            new_review = Noodle(name=name, review=review, rating=rating, spiciness=spiciness, category_id=company_id,image=image.filename)
+            db.session.add(new_review)
             db.session.commit()  # Don't forget to commit the changes
 
         return redirect(url_for('home'))
