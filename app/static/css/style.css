@@ -145,6 +145,7 @@ input[type="submit"]:hover {
 }
 
 .splash-screen h1 {
+    font-family: 'Pacifico', cursive;
     font-size: 10em;
     opacity: 0;
     transform: scale(0.5);
