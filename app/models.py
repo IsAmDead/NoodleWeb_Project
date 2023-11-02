@@ -1,3 +1,4 @@
+#This file allows for easy communication with the database and contains the structure
 from app.app import db
 
 class Noodle(db.Model):

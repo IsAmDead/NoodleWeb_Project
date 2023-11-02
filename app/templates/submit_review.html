@@ -5,6 +5,7 @@
     <title>Submit Noodle Review</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+    <!--Short javascript that displays the uploaded image as a preview-->
     <script>
         function previewImage() {
             const fileInput = document.getElementById('image');
@@ -26,10 +27,12 @@
 
 </head>
 <body>
+    <!--Connects the navbar with this page-->
     {% include "navbar.html" %}
 
     <h1>Submit Noodle Review</h1>
 
+    <!--These are all of the forms for the submit page-->
     <form action="{{ url_for('submit_review') }}" method="post" class="submit-form" enctype="multipart/form-data">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>

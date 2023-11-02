@@ -3,6 +3,7 @@ from app.app import app, db
 from flask import request, redirect, render_template, url_for
 from app.models import Category, Noodle
 
+#This is the main homepage, it gets the needed data from the database to display on the website
 @app.route('/', methods=['GET'])
 def home():
     company_filter = request.args.get('company')
@@ -21,6 +22,7 @@ def home():
 
     return render_template('index.html', noodles=noodles, categories=categories, spiciness_values=spiciness_values)
 
+#This is the submit page, it both gets and can post data
 @app.route('/submit_review', methods=['GET', 'POST'])
 def submit_review():
     if request.method == 'POST':
@@ -30,7 +32,7 @@ def submit_review():
         spiciness = request.form['spiciness']
         company_id = request.form['company']
 
-
+        #This is the uploading process, which gets the new data and posts into the database.
         image = request.files['image']
         if image and image.filename: # Check if the image has a filename
             image_filename = os.path.join('app','static','images',image.filename)

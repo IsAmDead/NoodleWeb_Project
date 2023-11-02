@@ -1,3 +1,4 @@
+#This file just creates the database with data, and used for testing purposes
 from app import app, db, Category, Noodle
 
 # Perform database actions within the application context
